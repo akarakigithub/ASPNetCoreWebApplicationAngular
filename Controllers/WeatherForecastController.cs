@@ -13,7 +13,7 @@ namespace ASPNetCoreWebApplicationAngular.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Hot and Mild", "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Hot and Mild", "OK", "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
