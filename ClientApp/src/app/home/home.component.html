@@ -1,4 +1,9 @@
-<h1 id="tableLabel">Products</h1>
+<div style="display:flex;flex-direction:row;align-items:center;align-content:center;justify-content:space-between">
+  <h1 id="tableLabel">Products</h1>
+  <div style="display:flex;flex-direction:row;align-items:flex-end;align-content:flex-end;justify-content:flex-end">
+    <button (click)="addProduct()" class="btn">Add</button>
+  </div>
+</div>
 
 <p *ngIf="!products"><em>Loading...</em></p>
 
@@ -8,6 +13,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Cost</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +21,10 @@
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.price }}</td>
+      <td>
+        <button (click)="editProduct(product)" class="btn">Edit</button>
+        <button (click)="deleteProduct(product)" class="btn" style="margin-left: 10px;">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>

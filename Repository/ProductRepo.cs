@@ -41,11 +41,35 @@ namespace ASPNetCoreWebApplicationAngular.Repository
 
         public bool Create(Product product)
         {
+            if(product!=null && !string.IsNullOrEmpty(product.Name))
+            {
+                product.Id = GenerateNewId().ToString();
+                _products.Add(product);
+                return true;
+            }
+            return false;
+        }
+
+        public bool Update(string id, Product product)
+        {
+            Product matches = _products.Find(p => p.Id == id);
+            if(matches!=null)
+            {
+                matches.Name = product.Name;
+                matches.Price = product.Price;
+                return true;
+            }
             return false;
         }
 
         public bool Delete(string id)
         {
+            int index = _products.FindIndex(p => p.Id == id);
+            if(index>=0)
+            {
+                _products.RemoveAt(index);
+                return true;
+            }
             return false;
         }
 
@@ -60,9 +84,16 @@ namespace ASPNetCoreWebApplicationAngular.Repository
             return _products;
         }
 
-        public bool Update(string id, Product product)
+        private Int64 GenerateNewId()
         {
-            return false;
+            Int64 newId = 0;
+            foreach(Product prod in _products)
+            {
+                if(Convert.ToInt64(prod.Id)>newId)
+                    newId = Convert.ToInt64(prod.Id);
+            }
+            newId++;
+            return newId;
         }
     }
 }
