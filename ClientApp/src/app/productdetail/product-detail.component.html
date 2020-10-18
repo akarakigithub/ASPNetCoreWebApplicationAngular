@@ -1,1 +1,15 @@
-<h1>Product Detail</h1>
+<br/>
+<div class="toolbar">
+  <h3><span style="color: red;">Product Detail</span></h3>
+  <div class="toolbarbuttons">
+    <button (click)="save()" class="btn">Save</button>
+    <button [routerLink]="['/products',productName]" class="btn" style="margin-left: 5px;">Cancel</button>
+  </div>
+</div>
+<div class="form">
+  <label>Product ID: <span style="font-weight: bold;">{{productId}}</span></label>
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="productName"/>
+  <label>Cost:</label>
+  <input type="text" [(ngModel)]="price"/>
+</div>

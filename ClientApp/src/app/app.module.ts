@@ -5,13 +5,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { GroupedProductsComponent } from './groupedproducts/groupedproducts.component';
+import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './productdetail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    GroupedProductsComponent,
+    ProductsComponent,
     ProductDetailComponent,
   ],
   imports: [
@@ -19,7 +21,9 @@ import { ProductDetailComponent } from './productdetail/product-detail.component
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: GroupedProductsComponent, pathMatch: 'full' },
+      { path: 'groupedproducts', component: GroupedProductsComponent },
+      { path: 'products/:name', component: ProductsComponent },
       { path: 'product/:id', component: ProductDetailComponent },
     ])
   ],

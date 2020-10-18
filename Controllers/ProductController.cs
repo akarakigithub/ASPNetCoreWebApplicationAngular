@@ -21,35 +21,35 @@ namespace ASPNetCoreWebApplicationAngular.Controllers
         }
 
         // GET: api/Product
-        [HttpGet]
-        public IEnumerable<Product> Get()
+        [HttpGet("GetAllByName")]
+        public IEnumerable<Product> GetAllByName(string productName)
         {
-            return this._repo.GetAll();
+            return this._repo.GetAllByName(productName);
         }
 
         // GET: api/Product/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("Get")]
         public Product Get(string id)
         {
             return this._repo.Get(id);
         }
 
         // POST: api/Product
-        [HttpPost]
+        [HttpPost("add")]
         public void Post([FromBody] Product value)
         {
             this._repo.Create(value);
         }
 
         // PUT: api/Product/5
-        [HttpPut("{id}")]
+        [HttpPut("update")]
         public void Put(string id, [FromBody] Product value)
         {
             this._repo.Update(id, value);
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpDelete("delete")]
         public void Delete(string id)
         {
             this._repo.Delete(id);

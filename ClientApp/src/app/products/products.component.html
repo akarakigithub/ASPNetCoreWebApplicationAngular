@@ -1,13 +1,15 @@
-<div style="display:flex;flex-direction:row;align-items:center;align-content:center;justify-content:space-between">
-  <h1 id="tableLabel">Products</h1>
-  <div style="display:flex;flex-direction:row;align-items:flex-end;align-content:flex-end;justify-content:flex-end">
+<br/>
+<div class="toolbar">
+  <h3><span style="color: red;">Product:</span> {{productName}}</h3>
+  <div class="toolbarbuttons">
     <button (click)="addProduct()" class="btn">Add</button>
+    <button [routerLink]="['/groupedproducts']" class="btn" style="margin-left: 5px;">Cancel</button>
   </div>
 </div>
 
 <p *ngIf="!products"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="products">
+<table class='table' *ngIf="products">
   <thead>
     <tr>
       <th>ID</th>

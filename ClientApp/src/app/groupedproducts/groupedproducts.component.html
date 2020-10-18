@@ -1,0 +1,25 @@
+<br/>
+<div class="toolbar">
+  <h2>Grouped Products</h2>
+</div>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+
+<table class='table' *ngIf="products">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Max Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>
+        <button (click)="editProduct(product)" class="btn">Edit {{product.name}} prices</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

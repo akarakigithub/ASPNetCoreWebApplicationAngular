@@ -23,7 +23,6 @@ namespace ASPNetCoreWebApplicationAngular
         {
             services.AddControllersWithViews();
 
-//            services.AddSingleton<IProductRepo, ProductRepo>();
             services.AddSingleton<ProductRepo>();
 
             // In production, the Angular files will be served from this directory

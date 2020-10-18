@@ -11,23 +11,31 @@ export class ProductService {
               @Inject('BASE_URL') private baseUrl: string) {
   }
 
-  getAll() {
-    return this.http.get<Product[]>(this.baseUrl + 'api/product');
+  getAllGroupedMaxPrice() {
+    return this.http.get<Product[]>(this.baseUrl + 'api/groupedproduct');
+  }
+
+  getAllByName(productName: string) {
+    return this.http.get<Product[]>(this.baseUrl + 'api/product/getallbyname?productName='+productName);
   }
 
   get(id: string) {
-    return this.http.get<Product>(this.baseUrl + 'api/product?id='+id);
+    return this.http.get<Product>(this.baseUrl + 'api/product/get?id='+id);
   }
 
   add(prod: Product) {
-    return this.http.post(this.baseUrl + 'api/product', prod);
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(prod);
+    return this.http.post(this.baseUrl + 'api/product/add', body, { 'headers': headers });
   }
 
   update(id: string, prod: Product) {
-    return this.http.put(this.baseUrl + 'api/product?id=' + id, prod);
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(prod);
+    return this.http.put(this.baseUrl + 'api/product/update?id=' + id, prod, { 'headers': headers });
   }
 
   delete(id: string) {
-    return this.http.delete(this.baseUrl + 'api/product?id=' + id);
+    return this.http.delete(this.baseUrl + 'api/product/delete?id=' + id);
   }
 }

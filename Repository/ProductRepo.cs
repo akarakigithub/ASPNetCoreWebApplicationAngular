@@ -79,9 +79,23 @@ namespace ASPNetCoreWebApplicationAngular.Repository
             return matches;
         }
 
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<Product> GetAllGroupedMaxPrice()
         {
-            return _products;
+            var results =
+                from product in _products
+                group product by product.Name into productGroup
+                select new Product
+                {
+                    Id = "0",
+                    Name = productGroup.Key,
+                    Price = productGroup.Max(x => x.Price),
+                };
+            return results.ToList();
+        }
+
+        public IEnumerable<Product> GetAllByName(string productName)
+        {
+            return _products.FindAll(p=>p.Name == productName);
         }
 
         private Int64 GenerateNewId()

@@ -1,16 +1,19 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProductService } from '../services/product-service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ProductsComponent implements OnInit {
 
+  private productName: string;
   public products: any[];
 
-  constructor(private prodSvc: ProductService, private router: Router) {
+  constructor(private prodSvc: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.productName = this.activatedRoute.snapshot.params.name;
   }
 
   ngOnInit() {
@@ -18,7 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadProducts() {
-    this.prodSvc.getAll().subscribe(result => {
+    this.prodSvc.getAllByName(this.productName).subscribe(result => {
       this.products = result;
     }, error => console.error(error));
   }

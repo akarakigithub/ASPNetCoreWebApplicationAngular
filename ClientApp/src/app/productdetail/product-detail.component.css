@@ -1,0 +1,20 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.toolbarbuttons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  align-content: flex-end;
+  justify-content: flex-end;
+}
